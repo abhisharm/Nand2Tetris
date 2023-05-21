@@ -1,0 +1,165 @@
+/** Implements a graphical block. */
+class Block {
+
+   field int x, y; // screen location of the block's top-left corner
+   field int width;
+   field int height;
+   field boolean isBlockDropping;
+   field boolean isGoingLeft;
+   field int stackHeight;
+   field int blockSpeed; //change to make harder
+   field boolean isBlockDropped;
+   field boolean isGameOver;
+
+   /** Constructs a new block with a given location and size. */
+   constructor Block new(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      let width = 60;
+      let height = 20;
+      let isBlockDropping = false;
+      let isGoingLeft = false;
+      let blockSpeed = 15; //wait time before movements(smaller is faster)
+      let isBlockDropped = false;
+      let isGameOver = false;
+      do draw();
+      return this;
+   }
+
+   /** Disposes this block. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   /** Draws the block on the screen. */
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawRectangle(x, y, x + width, y + height);
+      return;
+   }
+
+   /** Erases the block from the screen. */
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawRectangle(x, y, x + width, y + height);
+      return;
+   }
+
+   /** Moves the block down by 2 pixels. */
+   method void dropBlock() {    
+      if ((y + height) < 254) {
+         let isBlockDropped = false;
+         if (getIsStackable(x)){ //checks if it is stackable and stops it at current stop height
+               if (y < (254 - stackHeight)){
+                  let isBlockDropping = true;
+                  do Screen.setColor(false);
+                  do Screen.drawRectangle(x, y, x + width, y + 1);
+                  let y = y + 2;
+                  do Screen.setColor(true);
+                  do Screen.drawRectangle(x, (y + height) - 1, x + width, y + height);
+               }
+               else {
+                  let isBlockDropped = true;
+               }
+         }
+         else //drops it if not stackable
+         {
+            let isBlockDropping = true;
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + width, y + 1);
+            let y = y + 2;
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, (y + height) - 1, x + width, y + height);
+         }
+      }
+      else {
+         let isGameOver = true;
+      }
+      return;
+   }
+
+    method void moveLeftRight(){
+        if (~isBlockDropping) {
+            if(isGoingLeft)
+            {
+                do moveLeft();
+                do Sys.wait(blockSpeed);
+            }
+            else
+            {
+                do moveRight();
+                do Sys.wait(blockSpeed);
+            }
+        }
+        return;
+    }
+
+   /** Moves the block left by 2 pixels. */
+   method void moveLeft() {
+      if (x > 1) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle((x + width) - 1, y, x + width, y + height);
+         let x = x - 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle(x, y, x + 1, y + height);
+      }
+      else {
+        let isGoingLeft = false;
+      }
+      return;
+   }
+
+   /** Moves the block right by 2 pixels. */
+   method void moveRight() {
+      if ((x + width) < 510) {
+         do Screen.setColor(false);
+         do Screen.drawRectangle(x, y, x + 1, y + height);
+         let x = x + 2;
+         do Screen.setColor(true);
+         do Screen.drawRectangle((x + width) - 1, y, x + width, y + height);
+      }
+      else {
+        let isGoingLeft = true;
+      }
+      return;
+   }
+
+   method void setIsBlockDropping(boolean bool){
+    let isBlockDropping = bool;
+    return;
+   }
+
+   method void setIsBlockDropped(boolean bool){
+    let isBlockDropped = bool;
+    return;
+   }
+
+   method boolean getIsBlockDropped(){
+    return isBlockDropped;
+   }
+
+   method boolean getIsGameOver(){
+    return isGameOver;
+   }
+
+   method void setStackHeight(int topOfStack){
+      let stackHeight = topOfStack;
+      return;
+   }
+
+   method boolean getIsStackable(int x){
+      var int leftStop;
+      var int rightStop;
+      var int currentCenter;
+      let currentCenter = ((510 - width) / 2);
+      let leftStop = (currentCenter - (60 / 4));
+      let rightStop =  (currentCenter + (60 / 4));
+      if(x < rightStop){
+         if(x > leftStop){
+            return true;
+         }
+      }
+      return false;
+   }
+}

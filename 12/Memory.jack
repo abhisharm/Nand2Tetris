@@ -1,0 +1,107 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+    static Array memory;
+    static int heapBase, heapSize, freeList;
+
+    /** Initializes the class. */
+    function void init() {
+      let memory = 0;
+      let heapBase = 2048;
+      let freeList = heapBase;
+      let heapSize = 14336;
+      // initially the only freelist entry is the entire heap
+      let memory[freeList] = heapSize;
+      // set next pointer of only freelist entry to 'no block'
+      let memory[freeList + 1] = 0;
+      return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+      return memory[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+      let memory[address] = value;
+      return;
+    }
+
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc(int size) {
+      var int best, best_prev, best_diff, curr_list, prev_list, next;
+      let best = 0;
+      let best_prev = 0;
+      let best_diff = 0;
+      let curr_list = freeList;
+      let prev_list = 0;
+      while (~(curr_list = 0)) {
+        if (~(memory[curr_list] < size + 1)) {
+          if (best_diff = 0 | (memory[curr_list] - size) - 1 < best_diff) {
+            let best_prev = prev_list;
+            let best = curr_list;
+            let best_diff = (memory[best] - size) - 1;
+          }
+        }
+        let prev_list = curr_list;
+        let curr_list = memory[curr_list + 1];
+      }
+
+      if (best = 0) {
+        return -1;
+      }
+
+      // assumes a best-fit has been found
+      // best_diff is the difference between best.size and the amount of space
+      // needed to allocate size.
+      if (best_diff > 1) {
+        // since the size of the block after allocation is >= 2, we can
+        // chop off a block from this one and mark it as the previous block's
+        // next, or as the start of the freeList.
+        let memory[best] = memory[best] - best_diff;
+        let next = memory[best + 1];
+        let memory[best + size + 1] = best_diff;
+        let memory[best + size + 2] = next;
+        if (best_prev > 0) {
+          let memory[best_prev + 1] = best + size + 1;
+        } else {
+          let freeList = best + size + 1;
+        }
+      } else {
+        // else there is no block to be chopped off (if best_diff = 0 then
+        // the allocated block takes up all the space, and if best_diff = 1
+        // then there is not room to chop off a new block from the current -
+        // since the minimum size of a freeList entry is 2. So do not change
+        // best.size and if necessary update the previous blocks next to the
+        // next of this block.
+        let next = memory[best + 1];
+        if (best_prev > 0) {
+          let memory[best_prev + 1] = next;
+        } else {
+          let freeList = next;
+        }
+      }
+
+      return best + 1;
+    }
+
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+      var int listEntry;
+      let listEntry = o - 1;
+      let memory[listEntry + 1] = freeList;
+      let freeList = listEntry;
+      return;
+    }    
+}

@@ -1,0 +1,31 @@
+// Class representing the Queen piece
+// Can draw itself
+
+class Queen {
+  // these fields will be normally accessed as elements in an array.
+  field int x_square, y_square;
+
+  constructor Queen new(int x_square, int y_square) {
+    let x_square = x_square;
+    let y_square = y_square;
+    return this;
+  }
+
+  method void setXSquare(int square) {
+    let x_square = square;
+    return;
+  }
+
+  method void setYSquare(int square) {
+    let y_square = square;
+    return;
+  }
+
+  method int getXSquare() {
+    return x_square;
+  }
+
+  method int getYSquare() {
+    return y_square;
+  }
+}

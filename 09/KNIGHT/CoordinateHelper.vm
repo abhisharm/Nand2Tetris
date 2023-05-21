@@ -1,0 +1,105 @@
+function CoordinateHelper.getLocationFromCoordinates 1
+push argument 1
+push constant 32
+call Math.multiply 2
+push argument 0
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push local 0
+return
+function CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 3
+push argument 0
+push argument 2
+push constant 32
+call Math.multiply 2
+add
+pop local 0
+push argument 1
+push argument 3
+push constant 1
+add
+push constant 32
+call Math.multiply 2
+push constant 1
+sub
+add
+push constant 16
+sub
+pop local 1
+push constant 2
+call Array.new 1
+pop local 2
+push constant 0
+push local 2
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 2
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+return
+function CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare 4
+push argument 0
+push argument 1
+push argument 2
+push argument 3
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+pop local 1
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 1
+push local 2
+call CoordinateHelper.getLocationFromCoordinates 2
+pop local 0
+push local 0
+return
+function CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+push argument 0
+push argument 1
+push argument 2
+push argument 3
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+pop local 1
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+sub
+pop local 2
+push local 1
+push local 2
+call CoordinateHelper.getLocationFromCoordinates 2
+pop local 0
+push local 0
+return

@@ -1,0 +1,19 @@
+Allowed XML Tags:
+	terminal elements:
+		- keyword, symbol, integerConstant, stringConstant, identifier
+	nonterminal elements:
+		- class, classVarDec, subroutineDec, parameterList, 
+		  subroutineBody, varDec, statements, letStatement, 
+		  ifStatement, whileStatement, doStatement, returnStatement,
+		  expression, term, expressionList.
+	excluded elements:
+		- type, className, subroutineName, varName, statement,
+		  subroutineCall
+	Symbol Replacements:
+		-  (<, >, ", &) 
+		- (&lt;, &gt;, &quot:, &amp;)
+
+Steps:
+	1. Basic tokenizer (done)
+	2. basic compilation engine - without expressions & array-oriented
+	statements

@@ -1,0 +1,3 @@
+function CharToIntHelper.ConvertCharToInt 0
+push argument 0
+return

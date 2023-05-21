@@ -1,0 +1,11 @@
+function Main.main 1
+call TestDrawing.new 0
+pop local 0
+push local 0
+call TestDrawing.run 1
+pop temp 0
+push local 0
+call TestDrawing.dispose 1
+pop temp 0
+push constant 0
+return

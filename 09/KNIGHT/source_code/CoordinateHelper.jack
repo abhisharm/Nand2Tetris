@@ -1,0 +1,62 @@
+// Contains helper functions for managing coordinates
+
+class CoordinateHelper {
+  function int getLocationFromCoordinates(int x, int y) {
+    var int location;
+    let location = (y * 32) + (x / 16);
+    return location;
+   }
+
+  function Array getCoordinatesFromBoardCoordinatesAndLocation(
+    int x_board, int y_board, int x_square, int y_square) {
+
+    var int x, y;
+    var Array result;
+    let x = x_board + (x_square * 32);
+    // The drawing starts at the top-left, so have to subtract the height of
+    // the drawing from y so that it ends at y.
+    let y = y_board + (((y_square + 1) * 32) - 1) - 16;
+    let result = Array.new(2);
+    let result[0] = x;
+    let result[1] = y;
+    return result;
+  }
+
+  /* Gets the physical memory location to draw a piece from the coordinates of
+    the board and the square the piece is located in.
+    inputs:
+      int g_x, g_y - the x and y pixel-coordinates of the board on the screen
+      int x_square, y_square - the logical coordinates of the piece on the
+        board.
+  */
+  function int getMemLocationFromBoardCoordinatesAndSquare(
+    int g_x, int g_y, int x_square, int y_square) {
+
+    var int location;
+    var int x, y;
+    var Array coord_call;
+    let coord_call =
+      CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      g_x, g_y, x_square, y_square);
+    let x = coord_call[0];
+    let y = coord_call[1];
+    let location = CoordinateHelper.getLocationFromCoordinates(x, y);
+    return location;
+  }
+
+  function int getLetterMemLocationFromBoardCoordinatesAndSquare(
+    int g_x, int g_y, int x_square, int y_square) {
+
+    var int location;
+    var int x, y;
+    var Array coord_call;
+    let coord_call =
+      CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      g_x, g_y, x_square, y_square);
+    // Want to shift up and to the right by 16 bits
+    let x = coord_call[0] + 16;
+    let y = coord_call[1] - 16;
+    let location = CoordinateHelper.getLocationFromCoordinates(x, y);
+    return location;
+  }
+}

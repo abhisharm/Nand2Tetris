@@ -1,0 +1,32 @@
+// GameboardDrawer class
+// Handles the graphical parts of drawing the gameboard
+
+class GameboardDrawer {
+  /* Draws the 8x8 board of 16px squares starting at (x,y) and the knight and
+    queen pieces.*/
+  function void draw(int g_x, int g_y) {
+    var int grid_size;
+    var int cur_line;
+    var int line_x, line_y;
+
+    let grid_size = 8;
+    let cur_line = 0;
+    do Screen.setColor(true);
+    while (cur_line < grid_size) {
+      // draw the vertical line
+      let line_x = g_x + (cur_line * 32);
+      let line_y = g_y;
+      do Screen.drawLine(line_x, line_y, line_x, 255);
+      // draw the horizontal line
+      let line_x = g_x;
+      let line_y = g_y + (cur_line * 32);
+      do Screen.drawLine(line_x, line_y, 255, line_y);
+      let cur_line = cur_line + 1;
+    }
+
+    // draw the bototom line (this means the bottom squares are only 14px tall
+    // rather than 15px - but no one can tell.
+    do Screen.drawLine(0, 255, 255 ,255);
+    return;
+  }
+}

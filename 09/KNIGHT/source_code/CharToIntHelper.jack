@@ -1,0 +1,9 @@
+// A helper-class to convert a character to its corresponding int value.
+
+class CharToIntHelper {
+
+  function int ConvertCharToInt(char val) {
+    return val;
+  }
+
+}

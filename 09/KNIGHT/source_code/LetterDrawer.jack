@@ -1,0 +1,469 @@
+// A class used to draw letters on the screen
+
+class LetterDrawer {
+
+function void drawA(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 384);
+	do Memory.poke(memAddress+32, 384);
+	do Memory.poke(memAddress+64, 576);
+	do Memory.poke(memAddress+96, 576);
+	do Memory.poke(memAddress+128, 1056);
+	do Memory.poke(memAddress+160, 1056);
+	do Memory.poke(memAddress+192, 2064);
+	do Memory.poke(memAddress+224, 4080);
+	do Memory.poke(memAddress+256, 8184);
+	do Memory.poke(memAddress+288, 4104);
+	do Memory.poke(memAddress+320, 8196);
+	do Memory.poke(memAddress+352, 8196);
+	do Memory.poke(memAddress+384, 16386);
+	do Memory.poke(memAddress+416, 16386);
+	do Memory.poke(memAddress+448, -32767);
+	do Memory.poke(memAddress+480, -32767);
+	return;
+}
+
+function void drawB(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 1023);
+	do Memory.poke(memAddress+32, 7169);
+	do Memory.poke(memAddress+64, 24577);
+	do Memory.poke(memAddress+96, -32767);
+	do Memory.poke(memAddress+128, -32767);
+	do Memory.poke(memAddress+160, 24577);
+	do Memory.poke(memAddress+192, 7169);
+	do Memory.poke(memAddress+224, 1023);
+	do Memory.poke(memAddress+256, 1023);
+	do Memory.poke(memAddress+288, 7169);
+	do Memory.poke(memAddress+320, 24577);
+	do Memory.poke(memAddress+352, -32767);
+	do Memory.poke(memAddress+384, -32767);
+	do Memory.poke(memAddress+416, 24577);
+	do Memory.poke(memAddress+448, 7169);
+	do Memory.poke(memAddress+480, 1023);
+	return;
+}
+
+function void drawC(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, -2048);
+	do Memory.poke(memAddress+32, 1792);
+	do Memory.poke(memAddress+64, 224);
+	do Memory.poke(memAddress+96, 24);
+	do Memory.poke(memAddress+128, 4);
+	do Memory.poke(memAddress+160, 2);
+	do Memory.poke(memAddress+192, 1);
+	do Memory.poke(memAddress+224, 1);
+	do Memory.poke(memAddress+256, 1);
+	do Memory.poke(memAddress+288, 2);
+	do Memory.poke(memAddress+320, 4);
+	do Memory.poke(memAddress+352, 24);
+	do Memory.poke(memAddress+384, 224);
+	do Memory.poke(memAddress+416, 1792);
+	do Memory.poke(memAddress+448, -2048);
+	do Memory.poke(memAddress+480, 0);
+	return;
+}
+
+function void drawD(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 63);
+	do Memory.poke(memAddress+32, 961);
+	do Memory.poke(memAddress+64, 7169);
+	do Memory.poke(memAddress+96, 8193);
+	do Memory.poke(memAddress+128, 16385);
+	do Memory.poke(memAddress+160, -32767);
+	do Memory.poke(memAddress+192, -32767);
+	do Memory.poke(memAddress+224, -32767);
+	do Memory.poke(memAddress+256, -32767);
+	do Memory.poke(memAddress+288, -32767);
+	do Memory.poke(memAddress+320, 16385);
+	do Memory.poke(memAddress+352, 8193);
+	do Memory.poke(memAddress+384, 7169);
+	do Memory.poke(memAddress+416, 961);
+	do Memory.poke(memAddress+448, 57);
+	do Memory.poke(memAddress+480, 7);
+	return;
+}
+
+function void drawE(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 1023);
+	do Memory.poke(memAddress+32, 1);
+	do Memory.poke(memAddress+64, 1);
+	do Memory.poke(memAddress+96, 1);
+	do Memory.poke(memAddress+128, 1);
+	do Memory.poke(memAddress+160, 1);
+	do Memory.poke(memAddress+192, 1);
+	do Memory.poke(memAddress+224, 1023);
+	do Memory.poke(memAddress+256, 1023);
+	do Memory.poke(memAddress+288, 1);
+	do Memory.poke(memAddress+320, 1);
+	do Memory.poke(memAddress+352, 1);
+	do Memory.poke(memAddress+384, 1);
+	do Memory.poke(memAddress+416, 1);
+	do Memory.poke(memAddress+448, 1);
+	do Memory.poke(memAddress+480, 1023);
+	return;
+}
+
+function void drawF(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, -1);
+	do Memory.poke(memAddress+32, -1);
+	do Memory.poke(memAddress+64, 1);
+	do Memory.poke(memAddress+96, 1);
+	do Memory.poke(memAddress+128, 1);
+	do Memory.poke(memAddress+160, 1);
+	do Memory.poke(memAddress+192, 511);
+	do Memory.poke(memAddress+224, 511);
+	do Memory.poke(memAddress+256, 1);
+	do Memory.poke(memAddress+288, 1);
+	do Memory.poke(memAddress+320, 1);
+	do Memory.poke(memAddress+352, 1);
+	do Memory.poke(memAddress+384, 1);
+	do Memory.poke(memAddress+416, 1);
+	do Memory.poke(memAddress+448, 1);
+	do Memory.poke(memAddress+480, 1);
+	return;
+}
+
+function void drawG(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 4032);
+	do Memory.poke(memAddress+32, 48);
+	do Memory.poke(memAddress+64, 8);
+	do Memory.poke(memAddress+96, 6);
+	do Memory.poke(memAddress+128, 1);
+	do Memory.poke(memAddress+160, 1);
+	do Memory.poke(memAddress+192, 1);
+	do Memory.poke(memAddress+224, 1);
+	do Memory.poke(memAddress+256, 1);
+	do Memory.poke(memAddress+288, 3841);
+	do Memory.poke(memAddress+320, 2049);
+	do Memory.poke(memAddress+352, 2049);
+	do Memory.poke(memAddress+384, 2054);
+	do Memory.poke(memAddress+416, 2056);
+	do Memory.poke(memAddress+448, 2096);
+	do Memory.poke(memAddress+480, 4032);
+	return;
+}
+
+function void drawH(int location) {
+	var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, -32767);
+	do Memory.poke(memAddress+32, -32767);
+	do Memory.poke(memAddress+64, -32767);
+	do Memory.poke(memAddress+96, -32767);
+	do Memory.poke(memAddress+128, -32767);
+	do Memory.poke(memAddress+160, -32767);
+	do Memory.poke(memAddress+192, -32767);
+	do Memory.poke(memAddress+224, -1);
+	do Memory.poke(memAddress+256, -1);
+	do Memory.poke(memAddress+288, -32767);
+	do Memory.poke(memAddress+320, -32767);
+	do Memory.poke(memAddress+352, -32767);
+	do Memory.poke(memAddress+384, -32767);
+	do Memory.poke(memAddress+416, -32767);
+	do Memory.poke(memAddress+448, -32767);
+	do Memory.poke(memAddress+480, -32767);
+	return;
+}
+
+function void eraseSquare(int location) {
+  var int memAddress;
+
+	let memAddress = 16384+location;
+	do Memory.poke(memAddress+0, 0);
+	do Memory.poke(memAddress+32, 0);
+	do Memory.poke(memAddress+64, 0);
+	do Memory.poke(memAddress+96, 0);
+	do Memory.poke(memAddress+128, 0);
+	do Memory.poke(memAddress+160, 0);
+	do Memory.poke(memAddress+192, 0);
+	do Memory.poke(memAddress+224, 0);
+	do Memory.poke(memAddress+256, 0);
+	do Memory.poke(memAddress+288, 0);
+	do Memory.poke(memAddress+320, 0);
+	do Memory.poke(memAddress+352, 0);
+	do Memory.poke(memAddress+384, 0);
+	do Memory.poke(memAddress+416, 0);
+	do Memory.poke(memAddress+448, 0);
+	do Memory.poke(memAddress+480, 0);
+	return;
+}
+
+/* Draw the available moves on the board. Assumes that the
+  available_moves is already correct based on the knight's location,
+
+  inputs:
+    knight_moves: the KnightMoves object containing ordered_moves and
+      available_moves
+    board_x: the x location of the board
+    board_y: the y location of the board
+    knight_x: the x coordinate of the knight
+    knight_y: the y coordinate of the knight
+*/
+function void drawAvailableMovesOnBoard(
+  KnightMoves knight_moves,
+	int board_x,
+	int board_y,
+	int knight_x,
+	int knight_y) {
+
+  var int current_letter_location;
+  var Array ordered_moves;
+  var Array available_moves;
+  var Array curr_offset;
+
+  let ordered_moves = knight_moves.getOrderedMoves();
+  let available_moves = knight_moves.getAvailableMoves();
+
+  if (available_moves[0]) {
+    let curr_offset = ordered_moves[0];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawA(current_letter_location);
+  }
+
+	// drawing B
+  if (available_moves[1]) {
+    let curr_offset = ordered_moves[1];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawB(current_letter_location);
+  }
+
+	// drawing C
+  if (available_moves[2]) {
+    let curr_offset = ordered_moves[2];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawC(current_letter_location);
+  }
+
+	// drawing D
+  if (available_moves[3]) {
+    let curr_offset = ordered_moves[3];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawD(current_letter_location);
+  }
+
+	// drawing E
+  if (available_moves[4]) {
+    let curr_offset = ordered_moves[4];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawE(current_letter_location);
+  }
+
+	// drawing F
+  if (available_moves[5]) {
+    let curr_offset = ordered_moves[5];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawF(current_letter_location);
+  }
+
+	// drawing G
+  if (available_moves[6]) {
+    let curr_offset = ordered_moves[6];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawG(current_letter_location);
+  }
+
+	// drawing H
+  if (available_moves[7]) {
+    let curr_offset = ordered_moves[7];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.drawH(current_letter_location);
+  }
+
+  return;
+}
+
+/* Erase the available moves on the board. Assumes that the
+  available_moves is already correct based on the knight's location.
+
+  inputs:
+    knight_moves: the KnightMoves object containing ordered_moves and
+      available_moves
+    board_x: the x location of the board
+    board_y: the y location of the board
+    knight_x: the x coordinate of the knight
+    knight_y: the y coordinate of the knight
+*/
+function void eraseAvailableMovesOnBoard(
+  KnightMoves knight_moves,
+	int board_x,
+	int board_y,
+	int knight_x,
+	int knight_y) {
+
+  var int current_letter_location;
+  var Array ordered_moves;
+  var Array available_moves;
+  var Array curr_offset;
+
+  let ordered_moves = knight_moves.getOrderedMoves();
+  let available_moves = knight_moves.getAvailableMoves();
+
+  // erasing A
+  if (available_moves[0]) {
+    let curr_offset = ordered_moves[0];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing B
+  if (available_moves[1]) {
+    let curr_offset = ordered_moves[1];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing C
+  if (available_moves[2]) {
+    let curr_offset = ordered_moves[2];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing D
+  if (available_moves[3]) {
+    let curr_offset = ordered_moves[3];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing E
+  if (available_moves[4]) {
+    let curr_offset = ordered_moves[4];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing F
+  if (available_moves[5]) {
+    let curr_offset = ordered_moves[5];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing G
+  if (available_moves[6]) {
+    let curr_offset = ordered_moves[6];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+	// erasing H
+  if (available_moves[7]) {
+    let curr_offset = ordered_moves[7];
+    let current_letter_location = 
+      CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare(
+        board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do LetterDrawer.eraseSquare(current_letter_location);
+
+    // need to fix the line in the top-right
+    let curr_offset = CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+      board_x, board_y, knight_x + curr_offset[0], knight_y + curr_offset[1]);
+    do Screen.setColor(true);
+    do Screen.drawLine(
+      curr_offset[0] + 16, curr_offset[1] - 15, curr_offset[0] + 32, curr_offset[1] - 15);
+  }
+
+  return;
+}
+ 
+}

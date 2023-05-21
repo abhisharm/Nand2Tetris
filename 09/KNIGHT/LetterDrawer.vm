@@ -1,0 +1,1968 @@
+function LetterDrawer.drawA 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 384
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 384
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 576
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 576
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 1056
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 1056
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 2064
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 4080
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 8184
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 4104
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 8196
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 8196
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 16386
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 16386
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawB 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 7169
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 24577
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 24577
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 7169
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 7169
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 24577
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 24577
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 7169
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawC 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 2048
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 1792
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 224
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 24
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 4
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 2
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 2
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 4
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 24
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 224
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1792
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 2048
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawD 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 63
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 961
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 7169
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 8193
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 16385
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 16385
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 8193
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 7169
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 961
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 57
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 7
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawE 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 1023
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawF 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 511
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 511
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawG 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 4032
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 48
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 8
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 6
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 1
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 3841
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 2049
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 2049
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 2054
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 2056
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 2096
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 4032
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawH 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 1
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 32767
+neg
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.eraseSquare 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function LetterDrawer.drawAvailableMovesOnBoard 4
+push argument 0
+call KnightMoves.getOrderedMoves 1
+pop local 1
+push argument 0
+call KnightMoves.getAvailableMoves 1
+pop local 2
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawA 1
+pop temp 0
+label IF_FALSE0
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawB 1
+pop temp 0
+label IF_FALSE1
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawC 1
+pop temp 0
+label IF_FALSE2
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawD 1
+pop temp 0
+label IF_FALSE3
+push constant 4
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 4
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawE 1
+pop temp 0
+label IF_FALSE4
+push constant 5
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 5
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawF 1
+pop temp 0
+label IF_FALSE5
+push constant 6
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 6
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawG 1
+pop temp 0
+label IF_FALSE6
+push constant 7
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 7
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.drawH 1
+pop temp 0
+label IF_FALSE7
+push constant 0
+return
+function LetterDrawer.eraseAvailableMovesOnBoard 4
+push argument 0
+call KnightMoves.getOrderedMoves 1
+pop local 1
+push argument 0
+call KnightMoves.getAvailableMoves 1
+pop local 2
+push constant 0
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE0
+push constant 1
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE1
+push constant 2
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 2
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE2
+push constant 3
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 3
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE3
+push constant 4
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 4
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE4
+push constant 5
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 5
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE5
+push constant 6
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 6
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE6
+push constant 7
+push local 2
+add
+pop pointer 1
+push that 0
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 7
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getLetterMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call LetterDrawer.eraseSquare 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 3
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+push argument 4
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 16
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 32
+add
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+push constant 15
+sub
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE7
+push constant 0
+return

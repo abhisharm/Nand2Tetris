@@ -1,0 +1,107 @@
+// Class representing the scoreboard
+// Handles the informational text, updating the score after user win
+// and displaying the game over message.
+
+class Scoreboard {
+  field int text_row, text_column;
+  field Array scores;
+  field int max_games_fld, score_idx;
+
+  /* Scoreboard initializer.
+    Initializes the 'Output' class's conceptual 'cursor' to the point
+    represented by the graphical x and y coordinates provided.
+    Also writes the welcome text
+  */
+  constructor Scoreboard new(int graphical_x, int graphical_y, int max_games) {
+    let text_row = graphical_y / 11;
+    let text_column = graphical_x / 8;
+    do Output.moveCursor(text_row, text_column);
+    let scores = Array.new(max_games);
+    let max_games_fld = max_games;
+    let score_idx = 0;
+    do printIntroText();    
+    return this;
+  }
+
+  /* Move the cursor down a line.
+    Retains the 'text_column' set by the constructor. Increments the value of
+    'text_row' and calls the necessary 'Output' library function
+  */
+  method void newLine() {
+    let text_row = text_row + 1;
+    do Output.moveCursor(text_row, text_column);
+    return;
+  }
+
+  /* Prints the intro text.
+    Expects that the cursor is at the correct coordinates. Does not call a
+    newline after the text is written.
+  */
+  method void printIntroText() {
+		do Output.printString("Welcome to KNIGHT!");
+		do newLine();
+		do Output.printString("The objective is to move the");
+		do newLine();
+		do Output.printString("knight to the queen by pressing");
+		do newLine();
+		do Output.printString("the characters on the keyboard");
+		do newLine();
+		do Output.printString("corresonding to the letters on");
+		do newLine();
+		do Output.printString("the screen. ");
+		do newLine();
+		do Output.printString("Your score is related to the");
+		do newLine();
+		do Output.printString("number of moves you took to");
+		do newLine();
+		do Output.printString("reach the queen. Fewer is");
+		do newLine();
+		do Output.printString("better.");
+		do newLine();
+    do newLine();
+    do Output.printString("SCORES: ");
+    return;
+  }
+
+  /* Adds a score to the internal list of scores. Also draws the score on
+    the scoreboard. Doesn't assume that the line is correct (increments it by
+    one). Doesn't increment the line at the end.
+  */
+  method void updateScores(int score) {
+    let scores[score_idx] = score;
+    do newLine();
+    do Output.printString("Score after game ");
+    do Output.printInt(score_idx + 1);
+    do Output.printString(": ");
+    do Output.printInt(score);
+    let score_idx = score_idx + 1;
+    return;
+  }
+
+  /* Calculates the final score and prints the game-over message.
+    Doesn't assume that the line is correct (increments it by one). Doesn't
+    increment the line at the end.
+  */  
+  method void gameOver() {
+    var int final_score;
+    var int loop_idx;
+    
+    let loop_idx = 0;
+    let final_score = 0;
+    while (loop_idx < max_games_fld) {
+      let final_score = final_score + scores[loop_idx];
+      let loop_idx = loop_idx + 1;
+    }
+    
+    do newLine();
+    do Output.printString("Game Over!");
+    do newLine();
+    do Output.printString("Your final score was: ");
+    do Output.printInt(final_score);
+    do newLine();
+    do Output.printString("Well done! Try again and see");
+    do newLine();
+    do Output.printString("if you can do better!");
+    return;
+  }
+}

@@ -1,0 +1,84 @@
+// Basic snake game written for Nand2Tetris course
+
+/** Actual game class. Watches for input and passes it on to the snake. */
+
+class Game {
+    field Snake snake;
+
+    constructor Game new() {
+        let snake = Snake.new();
+        do snake.placeFood();
+        return this;
+    }
+
+    // Dispose of snake game
+    method void dispose() {
+        do snake.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void run() {
+        var int key;
+        var boolean quit;
+        let quit = false;
+
+        // keep checking if a button is pressed to change direction
+        while(~quit){
+            let key = Keyboard.keyPressed();
+            if (key = 130 & (~(snake.getdir() = 3))) {
+                // left = 1; can't go left if you're already going right
+                do snake.setdir(1);
+            }
+            if (key = 131 & (~(snake.getdir() = 4))) {
+                // up = 2; can't go up if you're already going down
+                do snake.setdir(2);
+            }
+            if (key = 132 & (~(snake.getdir() = 1))) {
+                //right = 3; can't go right if you're already going left
+                do snake.setdir(3);
+            }
+            if (key = 133 & (~(snake.getdir() = 2))) {
+                //down = 4; can't go down if you're already going up
+                do snake.setdir(4);
+            }
+            // if (key = 32) {
+            //     //space; will be the pause key = 0
+            //     do snake.setdir(0);
+            // }
+            // if(key = 65) { // A for debug
+            //     do snake.debug();
+            // }
+
+            do snake.move();
+
+            //see if we hit our own tail or a wall
+            if(snake.hitWall() | snake.hitTail()){
+                let quit = true;
+            }
+            else {
+                //see if we hit the food
+                if (snake.hitFood()){
+                    do snake.placeFood();
+                    //grow in length
+                    do snake.growTail();
+                }
+                else {
+                    // get rid of the end of the tail
+                    do snake.moveTail();
+                }
+
+                //draw the new head position
+                do snake.drawHead();
+                do Sys.wait(100);
+            }
+        }
+
+        // game ends
+        do Screen.clearScreen();
+
+        return;
+    }
+
+    
+}

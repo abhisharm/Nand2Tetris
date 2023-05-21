@@ -1,0 +1,18 @@
+// It is a very simple Sudoku checker build only for learning purposes
+// It supports only checking one 3x3 block of sudoku game, so every combination of
+// 1-9 digits without repeating is proper ;) 
+
+// Main function that intialize 
+class Main {
+   function void main() {
+     var SudokuBoard sudokuBoard;
+     let sudokuBoard = SudokuBoard.new();
+     // Fill single block of sudoku board
+     do sudokuBoard.fillSingleBlock();
+     // Draw this board 
+     do sudokuBoard.drawSingleBlockFrame();     
+     // Check board - the single typed block earlier ;) 
+     do sudokuBoard.checkBoard();
+     return;
+    }
+}

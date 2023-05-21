@@ -1,0 +1,489 @@
+function KnightGame.calculateScore 2
+push constant 100
+pop local 0
+push argument 0
+push constant 1
+sub
+pop local 1
+push local 0
+push constant 10
+push local 1
+call Math.multiply 2
+sub
+push constant 0
+call Math.max 2
+return
+function KnightGame.drawDivider 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+push constant 0
+push argument 0
+push constant 255
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function KnightGame.drawKnight 1
+push constant 0
+push constant 0
+push argument 0
+push argument 1
+call CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call KnightDrawer.draw 1
+pop temp 0
+push constant 0
+return
+function KnightGame.eraseKnight 4
+push constant 0
+push constant 0
+push argument 0
+push argument 1
+call CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call KnightDrawer.erase 1
+pop temp 0
+push constant 0
+push constant 0
+push argument 0
+push argument 1
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 1
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 2
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 2
+push local 3
+push local 2
+push local 3
+push constant 16
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function KnightGame.drawQueen 1
+push constant 0
+push constant 0
+push argument 0
+push argument 1
+call CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call QueenDrawer.draw 1
+pop temp 0
+push constant 0
+return
+function KnightGame.eraseQueen 4
+push constant 0
+push constant 0
+push argument 0
+push argument 1
+call CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare 4
+pop local 0
+push local 0
+call QueenDrawer.erase 1
+pop temp 0
+push constant 0
+push constant 0
+push argument 0
+push argument 1
+call CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation 4
+pop local 1
+push constant 0
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 2
+push constant 1
+push local 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 2
+push local 3
+push local 2
+push local 3
+push constant 16
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function KnightGame.new 4
+push constant 12
+call Memory.alloc 1
+pop pointer 0
+push constant 16
+pop this 3
+push constant 5
+pop this 4
+push constant 0
+pop this 8
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+push local 0
+push local 1
+call GameboardDrawer.draw 2
+pop temp 0
+push constant 256
+pop local 2
+push constant 0
+pop local 3
+push local 2
+call KnightGame.drawDivider 1
+pop temp 0
+push constant 264
+push constant 0
+push this 4
+call Scoreboard.new 3
+pop this 11
+push constant 0
+pop this 5
+push constant 0
+pop this 6
+push constant 0
+push constant 0
+call Knight.new 2
+pop this 0
+push constant 0
+push constant 0
+call Queen.new 2
+pop this 1
+call KnightMoves.initialize 0
+pop temp 0
+call KnightMoves.new 0
+pop this 2
+push constant 101
+call Random.setSeed 1
+pop temp 0
+push pointer 0
+call KnightGame.newGame 1
+pop temp 0
+push pointer 0
+return
+function KnightGame.handleInput 2
+push argument 0
+pop pointer 0
+push this 8
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push pointer 0
+push argument 1
+call KnightGame.move 2
+pop local 0
+push local 0
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push pointer 0
+call KnightGame.isWin 1
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 6
+call KnightGame.calculateScore 1
+pop local 1
+push this 11
+push local 1
+call Scoreboard.updateScores 2
+pop temp 0
+push this 5
+push constant 1
+add
+pop this 5
+push this 5
+push this 4
+lt
+not
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push pointer 0
+call KnightGame.gameOver 1
+pop temp 0
+push constant 0
+return
+label IF_FALSE3
+push this 5
+push this 6
+add
+call Random.setSeed 1
+pop temp 0
+push pointer 0
+call KnightGame.newGame 1
+pop temp 0
+label IF_FALSE2
+push constant 0
+return
+function KnightGame.newGame 6
+push argument 0
+pop pointer 0
+push constant 0
+pop this 7
+push constant 0
+pop this 6
+push constant 8
+call Random.randRange 1
+pop local 0
+push constant 8
+call Random.randRange 1
+pop local 1
+push constant 8
+call Random.randRange 1
+pop local 2
+push constant 8
+call Random.randRange 1
+pop local 3
+label WHILE_EXP0
+push local 0
+push local 2
+eq
+push local 1
+push local 3
+eq
+and
+not
+if-goto WHILE_END0
+push constant 8
+call Random.randRange 1
+pop local 0
+push constant 8
+call Random.randRange 1
+pop local 1
+push constant 8
+call Random.randRange 1
+pop local 2
+push constant 8
+call Random.randRange 1
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push this 0
+push local 2
+call Knight.setXSquare 2
+pop temp 0
+push this 0
+push local 3
+call Knight.setYSquare 2
+pop temp 0
+push this 1
+push local 0
+call Queen.setXSquare 2
+pop temp 0
+push this 1
+push local 1
+call Queen.setYSquare 2
+pop temp 0
+push this 0
+call Knight.getXSquare 1
+push this 0
+call Knight.getYSquare 1
+call KnightGame.drawKnight 2
+pop temp 0
+push this 1
+call Queen.getXSquare 1
+push this 1
+call Queen.getYSquare 1
+call KnightGame.drawQueen 2
+pop temp 0
+push this 2
+push local 2
+push local 3
+call KnightMoves.setAvailableMovesForCoordinates 3
+pop temp 0
+push this 2
+push constant 0
+push constant 0
+push local 2
+push local 3
+call LetterDrawer.drawAvailableMovesOnBoard 5
+pop temp 0
+push constant 0
+return
+function KnightGame.move 6
+push argument 0
+pop pointer 0
+push this 8
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push constant 65
+pop local 0
+push argument 1
+call CharToIntHelper.ConvertCharToInt 1
+pop local 1
+push local 1
+push local 0
+sub
+pop local 2
+push this 2
+push local 2
+call KnightMoves.isValidMove 2
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push this 2
+push local 2
+call KnightMoves.getMoveOffset 2
+pop local 3
+push this 0
+call Knight.getXSquare 1
+push constant 0
+push local 3
+add
+pop pointer 1
+push that 0
+add
+pop local 4
+push this 0
+call Knight.getYSquare 1
+push constant 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+pop local 5
+push this 6
+push constant 1
+add
+pop this 6
+push local 4
+push this 1
+call Queen.getXSquare 1
+eq
+push local 5
+push this 1
+call Queen.getYSquare 1
+eq
+and
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+not
+pop this 7
+push this 0
+call Knight.getXSquare 1
+push this 0
+call Knight.getYSquare 1
+call KnightGame.eraseKnight 2
+pop temp 0
+push this 2
+push constant 0
+push constant 0
+push this 0
+call Knight.getXSquare 1
+push this 0
+call Knight.getYSquare 1
+call LetterDrawer.eraseAvailableMovesOnBoard 5
+pop temp 0
+push this 1
+call Queen.getXSquare 1
+push this 1
+call Queen.getYSquare 1
+call KnightGame.eraseQueen 2
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push this 0
+call Knight.getXSquare 1
+push this 0
+call Knight.getYSquare 1
+call KnightGame.eraseKnight 2
+pop temp 0
+push this 2
+push constant 0
+push constant 0
+push this 0
+call Knight.getXSquare 1
+push this 0
+call Knight.getYSquare 1
+call LetterDrawer.eraseAvailableMovesOnBoard 5
+pop temp 0
+push this 0
+push local 4
+call Knight.setXSquare 2
+pop temp 0
+push this 0
+push local 5
+call Knight.setYSquare 2
+pop temp 0
+push local 4
+push local 5
+call KnightGame.drawKnight 2
+pop temp 0
+push this 2
+push local 4
+push local 5
+call KnightMoves.setAvailableMovesForCoordinates 3
+pop temp 0
+push this 2
+push constant 0
+push constant 0
+push local 4
+push local 5
+call LetterDrawer.drawAvailableMovesOnBoard 5
+pop temp 0
+label IF_END2
+push constant 0
+not
+return
+function KnightGame.gameOver 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+pop this 8
+push this 11
+call Scoreboard.gameOver 1
+pop temp 0
+push constant 0
+return
+function KnightGame.isWin 0
+push argument 0
+pop pointer 0
+push this 7
+return

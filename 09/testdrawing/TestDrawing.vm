@@ -1,0 +1,168 @@
+function TestDrawing.new 0
+push constant 0
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+return
+function TestDrawing.drawKnight 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 384
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 832
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 1824
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 1808
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 3880
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 3332
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 6402
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 4361
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 287
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 304
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 288
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 288
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 288
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 16191
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 8193
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 16383
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function TestDrawing.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function TestDrawing.drawboard 3
+push argument 0
+pop pointer 0
+push constant 128
+pop local 0
+push constant 256
+pop local 1
+push constant 0
+pop local 2
+push local 2
+call TestDrawing.drawKnight 1
+pop temp 0
+push constant 0
+return
+function TestDrawing.run 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 1
+not
+not
+if-goto WHILE_END0
+push pointer 0
+call TestDrawing.drawboard 1
+pop temp 0
+label WHILE_EXP1
+push local 0
+push constant 0
+eq
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 81
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop local 1
+label IF_FALSE0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

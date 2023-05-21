@@ -1,0 +1,364 @@
+function StackerGame.new 0
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+push constant 225
+push constant 234
+call Block.new 2
+pop this 0
+push constant 0
+pop this 4
+push constant 40
+pop this 2
+push constant 0
+pop this 3
+push pointer 0
+return
+function StackerGame.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Block.dispose 1
+pop temp 0
+push this 1
+call Block.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function StackerGame.moveStackingBlock 0
+push argument 0
+pop pointer 0
+push this 4
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Block.getIsBlockDropped 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 2
+push constant 20
+add
+pop this 2
+push this 1
+push this 2
+call Block.setStackHeight 2
+pop temp 0
+push constant 0
+pop this 4
+push pointer 0
+call StackerGame.hasGameEnded 1
+pop temp 0
+push this 3
+not
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call StackerGame.run 1
+pop temp 0
+label IF_FALSE2
+goto IF_END1
+label IF_FALSE1
+push this 1
+call Block.dropBlock 1
+pop temp 0
+label IF_END1
+label IF_FALSE0
+push constant 5
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function StackerGame.run 1
+push argument 0
+pop pointer 0
+push constant 0
+push constant 40
+call Block.new 2
+pop this 1
+push this 1
+push this 2
+call Block.setStackHeight 2
+pop temp 0
+push pointer 0
+call StackerGame.displayCountdown 1
+pop temp 0
+label WHILE_EXP0
+push this 3
+not
+not
+if-goto WHILE_END0
+label WHILE_EXP1
+push local 0
+push constant 0
+eq
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 0
+push this 1
+call Block.moveLeftRight 1
+pop temp 0
+push pointer 0
+call StackerGame.moveStackingBlock 1
+pop temp 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 81
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+pop this 3
+label IF_FALSE0
+push local 0
+push constant 133
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 2
+pop this 4
+label IF_FALSE1
+label WHILE_EXP2
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END2
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call StackerGame.moveStackingBlock 1
+pop temp 0
+goto WHILE_EXP2
+label WHILE_END2
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function StackerGame.displayCountdown 0
+push argument 0
+pop pointer 0
+push constant 3
+push constant 31
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 51
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push constant 3
+push constant 31
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 50
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push constant 3
+push constant 31
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 49
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push constant 3
+push constant 29
+call Output.moveCursor 2
+pop temp 0
+push constant 5
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call StackerGame.clearCountDown 1
+pop temp 0
+push constant 0
+return
+function StackerGame.clearCountDown 1
+push argument 0
+pop pointer 0
+push constant 5
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 0
+eq
+not
+not
+if-goto WHILE_END0
+call Output.backSpace 0
+pop temp 0
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function StackerGame.hasGameEnded 0
+push argument 0
+pop pointer 0
+push pointer 0
+call StackerGame.checkGameOver 1
+pop temp 0
+push pointer 0
+call StackerGame.checkWinner 1
+pop temp 0
+push constant 0
+return
+function StackerGame.checkGameOver 0
+push argument 0
+pop pointer 0
+push this 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 1
+call Block.getIsGameOver 1
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 60
+push constant 510
+push constant 254
+call Screen.drawRectangle 4
+pop temp 0
+push constant 7
+push constant 27
+call Output.moveCursor 2
+pop temp 0
+push constant 9
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+not
+pop this 3
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return
+function StackerGame.checkWinner 0
+push argument 0
+pop pointer 0
+push this 3
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 2
+push constant 200
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 60
+push constant 510
+push constant 254
+call Screen.drawRectangle 4
+pop temp 0
+push constant 7
+push constant 26
+call Output.moveCursor 2
+pop temp 0
+push constant 10
+call String.new 1
+push constant 89
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 87
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+not
+pop this 3
+label IF_FALSE1
+label IF_FALSE0
+push constant 0
+return

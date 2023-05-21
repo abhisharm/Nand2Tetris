@@ -1,0 +1,51 @@
+// Class representing the graphical aspects of a 'Knight' piece
+// Allows the caller to draw and erase a knight wherever desired.
+// Does not carry any info related to the location of the knight
+
+class KnightDrawer {
+  function void draw(int location) {
+    var int memAddress;
+
+	  let memAddress = 16384+location;
+	  do Memory.poke(memAddress+0, 384);
+	  do Memory.poke(memAddress+32, 832);
+	  do Memory.poke(memAddress+64, 1824);
+	  do Memory.poke(memAddress+96, 1808);
+	  do Memory.poke(memAddress+128, 3880);
+	  do Memory.poke(memAddress+160, 3332);
+	  do Memory.poke(memAddress+192, 6402);
+	  do Memory.poke(memAddress+224, 4361);
+	  do Memory.poke(memAddress+256, 287);
+	  do Memory.poke(memAddress+288, 304);
+	  do Memory.poke(memAddress+320, 288);
+	  do Memory.poke(memAddress+352, 288);
+	  do Memory.poke(memAddress+384, 288);
+	  do Memory.poke(memAddress+416, 16191);
+	  do Memory.poke(memAddress+448, 8193);
+	  do Memory.poke(memAddress+480, 16383);
+	  return;
+  }
+
+  function void erase(int location) {
+    var int memAddress;
+
+    let memAddress = 16384+location;
+    do Memory.poke(memAddress+0, 0);
+    do Memory.poke(memAddress+32, 0);
+    do Memory.poke(memAddress+64, 0);
+    do Memory.poke(memAddress+96, 0);
+    do Memory.poke(memAddress+128, 0);
+    do Memory.poke(memAddress+160, 0);
+    do Memory.poke(memAddress+192, 0);
+    do Memory.poke(memAddress+224, 0);
+    do Memory.poke(memAddress+256, 0);
+    do Memory.poke(memAddress+288, 0);
+    do Memory.poke(memAddress+320, 0);
+    do Memory.poke(memAddress+352, 0);
+    do Memory.poke(memAddress+384, 0);
+    do Memory.poke(memAddress+416, 0);
+    do Memory.poke(memAddress+448, 0);
+    do Memory.poke(memAddress+480, 0);
+    return;
+  }
+}

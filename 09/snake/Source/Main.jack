@@ -1,0 +1,27 @@
+// Basic snake game written for Nand2Tetris course
+
+/** Requests key presses to get a seed for the random generator, initializes new Snake game, and starts it.*/
+
+class Main {
+    function void main() {
+        var int seed, i;
+        var Game game;
+        let i = 0;
+
+        do Output.printString("Hit some keys for a random string.");
+        do Output.println();
+
+        while (i<3){
+            let seed = seed + Keyboard.readChar();
+            let i = i + 1;
+        }
+
+        do Random.setSeed(seed);
+        do Screen.clearScreen();
+
+        let game = Game.new();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}

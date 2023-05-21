@@ -1,0 +1,168 @@
+// Class representing array of possible moves for the Knight at a given
+// position.
+
+class KnightMoves {
+  static Array ordered_moves;
+  field Array available_moves;
+
+  /* Initialize the 'KnightMoves' static array which consists of all possible
+    moves in the movelist. A move is an array of two ints corresponding to an
+    x and y offset.
+  */
+  function void initialize() {
+    var Array current_offset;
+
+    // Set up ordered moves
+    let ordered_moves = Array.new(8);
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = 1;
+    let current_offset[1] = -2;
+    let ordered_moves[0] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = 2;
+    let current_offset[1] = -1;
+    let ordered_moves[1] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = 2;
+    let current_offset[1] = 1;
+    let ordered_moves[2] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = 1;
+    let current_offset[1] = 2;
+    let ordered_moves[3] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = -1;
+    let current_offset[1] = 2;
+    let ordered_moves[4] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = -2;
+    let current_offset[1] = 1;
+    let ordered_moves[5] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = -2;
+    let current_offset[1] = -1;
+    let ordered_moves[6] = current_offset;
+
+    let current_offset = Array.new(2);
+    let current_offset[0] = -1;
+    let current_offset[1] = -2;
+    let ordered_moves[7] = current_offset;
+
+    return;
+  }
+
+  constructor KnightMoves new() {
+    var int ordered_moves_index;
+    // set up available_moves
+    let ordered_moves_index = 0;
+    let available_moves = Array.new(8);
+    // set up an accessory array to 'ordered_moves' setup so that if
+    // ordered_moves[i] is valid then available_moves[i] = true, else false.
+    while (ordered_moves_index < 8) {
+      let available_moves[ordered_moves_index] = false;
+      let ordered_moves_index = ordered_moves_index + 1;
+    }
+
+    return this;
+  }
+
+  method void disposeOrderedPossibleMoves() {
+    var int i;
+    var Array curr;
+    let i = 0;
+    while (i < 8) {
+      let curr = ordered_moves[i];
+      do curr.dispose();
+      let i = i + 1;
+    }
+    do ordered_moves.dispose();
+    return;
+  }
+
+  method void disposeAvailableMoves() {
+    var int i;
+    var Array curr;
+    let i = 0;
+    while (i < 8) {
+      let curr = available_moves[i];
+      do curr.dispose();
+      let i = i + 1;
+    }
+    do available_moves.dispose();
+    return;
+
+  }
+
+  method void dispose() {
+    do disposeOrderedPossibleMoves();
+    do disposeAvailableMoves();
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  /* Resets the 'available_moves' array and populates it with all the possible
+    offsets from the given knight position (assumes 8x8 board). 
+  inputs:
+    int x, y - the x and y logical coordinates of the knight on the board.
+  */
+  method void setAvailableMovesForCoordinates(int x, int y) {
+    var int move_index;
+    var Array current_offset;
+    var Array current_move;
+
+    let move_index = 0;
+    while (move_index < 8) {
+      let current_offset = ordered_moves[move_index];
+      if (((x + current_offset[0]) < 8) & ~(x + current_offset[0] < 0) &
+        ((y + current_offset[1]) < 8) & ~(y + current_offset[1] < 0)) {
+        
+        let available_moves[move_index] = true;
+      } else {
+        let available_moves[move_index] = false;
+      }
+
+      let move_index = move_index + 1;
+    }
+
+    return;
+  }
+
+  /* Checks if the given move is valid. By this we mean, it accesses an index
+    of a move and one that is valid as determined by 'available_moves'
+  inputs:
+    int index - the index of the offset
+  */
+  method bool isValidMove(int index) {
+    if ((index > 8) | (index < 0)) {
+      return false; 
+    }
+
+    return available_moves[index];
+  }
+
+  /* Gets the offset for the knight from the provided list of moves. Assumes
+    that the index is valid and 'isValidMove' was used to check.
+    inputs:
+      int index - the index of the offset
+    outputs:
+      An array with two elements - the x and y offsets for the move.
+  */
+  method Array getMoveOffset(int index) {
+    return ordered_moves[index]; 
+  }
+
+  method Array getOrderedMoves() {
+    return ordered_moves;
+  }
+
+  method Array getAvailableMoves() {
+    return available_moves;
+  }
+}

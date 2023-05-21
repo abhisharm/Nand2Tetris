@@ -1,0 +1,306 @@
+// Class representing the full knight game
+// Handles updating logical state upon user input (including validation)
+// Handles all graphical aspects of the game
+
+
+class KnightGame {
+  field Knight knight;
+  field Queen queen;
+  field KnightMoves knight_moves;
+  field int max_turns;
+  field int max_games;
+  field int games_played, num_moves;
+  field bool is_win, is_game_over;
+  field int text_row, text_column;
+  field Scoreboard scoreboard;
+
+  /* Calculate the score for a given number of moves.
+    inputs:
+      int num_moves - number of moves needed to reach the queen.
+    ouptuts:
+      the score from the given number of moves.
+  */
+  function int calculateScore(int num_moves) {
+    var int max_score;
+    var int subtract_multiplier;
+    let max_score = 100;
+    let subtract_multiplier = num_moves - 1;
+    return Math.max(max_score - (10 * subtract_multiplier), 0);
+  }
+
+  /* draw the vertical divider between the gameboard and scoreboard.
+  */
+  function void drawDivider(int x) {
+    do Screen.setColor(true);
+    do Screen.drawLine(x, 0, x, 255);
+    return;
+  }
+
+  /* Draw the knight at the given square.
+    inputs:
+      int square_x, square_y - the logical coordinates on the board
+      bool color - whether to draw or erase
+  */
+  function void drawKnight(int square_x, int square_y) {
+    var int knight_mem;
+
+    let knight_mem =
+      CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare(
+      0, 0, square_x, square_y);
+    do KnightDrawer.draw(knight_mem);
+    return;
+  }
+
+  /* Erase the knight at the given square.
+    inputs:
+      int square_x, square_y - the logical coordinates on the board
+      bool color - whether to draw or erase
+  */
+  function void eraseKnight(int square_x, int square_y) {
+    var int knight_mem;
+    var Array knight_arr;
+    var int knight_x;
+    var int knight_y;
+
+    let knight_mem =
+      CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare(
+      0, 0, square_x, square_y);
+    do KnightDrawer.erase(knight_mem);
+    let knight_arr =
+      CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+        0, 0, square_x, square_y);
+    let knight_x = knight_arr[0];
+    let knight_y = knight_arr[1];
+    do Screen.setColor(true);
+    do Screen.drawLine(knight_x, knight_y, knight_x, knight_y + 16);
+    return;
+  }
+
+  /* Draw the queen at the given square.
+    inputs:
+      int square_x, square_y - the logical coordinates on the board
+  */
+  function void drawQueen(int square_x, int square_y) {
+    var int queen_mem;
+
+    let queen_mem =
+      CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare(
+      0, 0, square_x, square_y);
+    do QueenDrawer.draw(queen_mem);
+    return;
+  }
+
+  /* Erase the queen at the given square.
+    inputs:
+      int square_x, square_y - the logical coordinates on the board
+  */
+  function void eraseQueen(int square_x, int square_y) {
+    var int queen_mem;
+    var Array queen_arr;
+    var int queen_x;
+    var int queen_y;
+
+    let queen_mem =
+      CoordinateHelper.getMemLocationFromBoardCoordinatesAndSquare(
+      0, 0, square_x, square_y);
+    do QueenDrawer.erase(queen_mem);
+
+    let queen_arr =
+      CoordinateHelper.getCoordinatesFromBoardCoordinatesAndLocation(
+        0, 0, square_x, square_y);
+    let queen_x = queen_arr[0];
+    let queen_y = queen_arr[1];
+    do Screen.setColor(true);
+    do Screen.drawLine(queen_x, queen_y, queen_x, queen_y + 16);
+    return;
+  }
+
+  /* Constructor for the Knightgame. Has a side-effect of drawing the game on
+    the screen.
+  */
+  constructor KnightGame new() {
+    var int board_x;
+    var int board_y;
+    var int scoreboard_x;
+    var int scoreboard_y;
+
+    // Defining max turns
+    let max_turns = 16;
+    let max_games = 5;
+    let is_game_over = false;
+
+    // Drawing the game board (no state)
+    let board_x = 0;
+    let board_y = 0;
+    do GameboardDrawer.draw(board_x, board_y);
+
+    // Drawing the divider
+    let scoreboard_x = 256;
+    let scoreboard_y = 0; 
+    do KnightGame.drawDivider(scoreboard_x);
+
+    // Set up the scoreboard
+    let scoreboard = Scoreboard.new(264, 0, max_games);
+
+    // Setting up the scorekeeping
+    let games_played = 0;
+    let num_moves = 0;
+
+    // Creating Knight and Queen
+    let knight = Knight.new(0, 0);
+    let queen = Queen.new(0, 0);
+
+    // Set up available moves tracker
+    do KnightMoves.initialize();
+    let knight_moves = KnightMoves.new();
+
+    // Set up the randomness generator
+    do Random.setSeed(101);
+
+    // Start a new game
+    do newGame();
+
+    return this;
+  }
+
+
+  /* Handle input from the player. This moves the game forward and does all
+    necessary graphical and logical work.
+  inputs:
+    input - the keyboard character pressed by the player
+  */
+  method void handleInput(char input) {
+    var bool updated;
+    var int score;
+    if (is_game_over) {
+      return;
+    }
+    let updated = move(input);
+    if (~updated) {
+      return;
+    }
+
+    if (isWin()) {
+      let score = KnightGame.calculateScore(num_moves);
+      do scoreboard.updateScores(score);
+      let games_played = games_played + 1;
+      if (~(games_played < max_games)) {
+        do gameOver();
+        return;
+      }
+      do Random.setSeed(games_played + num_moves);
+      do newGame();
+    }
+
+    return;
+  }
+
+  /* Starts a new game - setting the coordinates of the knight and queen to new
+    randomly-selected valid locations and redrawing them. Assumes the board is
+    already cleared.
+  */
+  method void newGame() {
+    var int queen_x, queen_y;
+    var int knight_x, knight_y;
+    var int knight_mem, queen_mem;
+    
+    let is_win = false;
+    let num_moves = 0;
+
+    let queen_x = Random.randRange(8);
+    let queen_y = Random.randRange(8);
+    let knight_x = Random.randRange(8);
+    let knight_y = Random.randRange(8);
+    while ((queen_x = knight_x) & (queen_y = knight_y)) {
+      let queen_x = Random.randRange(8);
+      let queen_y = Random.randRange(8);
+      let knight_x = Random.randRange(8);
+      let knight_y = Random.randRange(8);
+    }
+
+    do knight.setXSquare(knight_x);
+    do knight.setYSquare(knight_y);
+    do queen.setXSquare(queen_x);
+    do queen.setYSquare(queen_y);
+
+    do KnightGame.drawKnight(knight.getXSquare(), knight.getYSquare());
+    do KnightGame.drawQueen(queen.getXSquare(), queen.getYSquare());
+
+    do knight_moves.setAvailableMovesForCoordinates(knight_x, knight_y);
+    do LetterDrawer.drawAvailableMovesOnBoard(
+      knight_moves, 0, 0, knight_x, knight_y); 
+    return;
+  }
+
+  /* Update the board with the move. This involves updating the knight/queen
+    fields. Note that in the case where the user has won, this does nothing 
+    (we expect that the caller calls 'IsWin()' and 'Reset'). Increments the 'num_moves'
+    counter if the move was valid. This also redraws the knight if necessary
+    (i.e., if the knight moved but not on top of the queen).
+  inputs:
+    input - a char representing user's input
+  outputs:
+    a bool that represents whether the move caused any update to the game state
+    or not. If the move was invalid or the game was already over, no update
+    should happen.
+  */
+  method bool move(char input) {
+    var int first_char_val;
+    var int input_int;
+    var int input_index;
+    var Array move_offset;
+    var int new_x, new_y;
+
+    if (is_game_over) {
+      return false;
+    }
+
+    let first_char_val = 65;
+    let input_int = CharToIntHelper.ConvertCharToInt(input);
+    let input_index = input_int - first_char_val;
+    if (~knight_moves.isValidMove(input_index)) {
+      return false;
+    }
+
+    let move_offset = knight_moves.getMoveOffset(input_index);
+    let new_x = knight.getXSquare() + move_offset[0];
+    let new_y = knight.getYSquare() + move_offset[1];
+    let num_moves = num_moves + 1;
+
+    if ((new_x = queen.getXSquare()) & (new_y = queen.getYSquare())) {
+      let is_win = true;
+      do KnightGame.eraseKnight(knight.getXSquare(), knight.getYSquare());
+      do LetterDrawer.eraseAvailableMovesOnBoard(
+        knight_moves, 0, 0, knight.getXSquare(), knight.getYSquare());
+      do KnightGame.eraseQueen(queen.getXSquare(), queen.getYSquare());
+      // let games_played = games_played + 1;
+    } else {
+      do KnightGame.eraseKnight(knight.getXSquare(), knight.getYSquare());
+      do LetterDrawer.eraseAvailableMovesOnBoard(
+        knight_moves, 0, 0, knight.getXSquare(), knight.getYSquare());
+      do knight.setXSquare(new_x);
+      do knight.setYSquare(new_y);
+      do KnightGame.drawKnight(new_x, new_y);
+      do knight_moves.setAvailableMovesForCoordinates(new_x, new_y);
+      do LetterDrawer.drawAvailableMovesOnBoard(
+         knight_moves, 0, 0, new_x, new_y); 
+    }
+    return true;
+  }
+
+  /* Set the game to state 'over'.
+  */
+  method void gameOver() {
+    let is_game_over = true;
+    do scoreboard.gameOver();
+    return;
+  }
+
+  /* Tells whether or not the current game state represents a winning position.
+  outputs:
+    whether or not the knight and queen are on the same square.
+  */
+  method bool isWin() {
+    return is_win;
+  }
+}

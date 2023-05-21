@@ -1,0 +1,32 @@
+
+/* The main game entry-point
+ Handles input from the user and passes it to the Game implementation
+ Loops forever until the user gives input or the quit command
+*/
+class Main {
+  /* Main program loop.*/
+  function void main() {
+    var KnightGame game;
+    // this can be used to modify the max number of turns
+    var int max_turns;
+    var char user_key;
+    let max_turns = 8;
+    let game = KnightGame.new();
+    while(true) {
+      let user_key = Keyboard.keyPressed();
+      while (user_key = 0 | user_key = Keyboard.keyPressed()) {
+        let user_key = Keyboard.keyPressed();
+      }
+
+      // if 'q' is pressed, quit the game
+      if (user_key = 81) {
+        return;
+      }
+
+      do game.handleInput(user_key);
+    }
+
+    // shouldn't reach this
+    return;
+  }
+}

@@ -1,0 +1,227 @@
+// Basic snake game written for Nand2Tetris course
+
+/** manages snake and food position on the board. Board is 102 x 51 */
+
+class Snake {
+    field int x_head, y_head, x_food, y_food;
+    field int dir;
+    field Array x_tail, y_tail;
+    field int length, tail_index;
+    // tail index points to the oldest segment in the tail
+    // this lets us constantly update the tail without having to shuffle data in the array all the time
+
+    constructor Snake new() {
+        let x_food = 0;
+        let y_food = 0;
+        let x_head = 60;
+        let y_head = 30;
+        let dir = 0;
+        let length = 1;
+        let x_tail = Array.new(1000);
+        let y_tail = Array.new(1000);
+        let x_tail[0] = 60;
+        let y_tail[0] = 30;
+        let tail_index = 0;
+
+        return this;
+    }
+
+    method void setdir(int newdir) {
+        let dir = newdir;
+        return;
+    }
+
+    method int getdir() {
+        return dir;
+    }
+
+    method int x() {
+        return x_head;
+    }
+
+    method int y() {
+        return y_head;
+    }
+
+    method void move() {
+        if (~(dir = 0)) {
+            do drawSegment();
+        }
+        if (dir = 1) { // left
+            let x_head = x_head - 1;
+        }
+        if (dir = 2) {// up
+            let y_head = y_head - 1;
+        }
+        if (dir = 3) {//right
+            let x_head = x_head + 1;
+        }
+        if (dir = 4) {//down
+            let y_head = y_head + 1;
+        }
+        return;
+    }
+
+    method void dispose() {
+        do x_tail.dispose();
+        do y_tail.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void drawHead() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x_head*5,y_head*5,((x_head*5)+5), ((y_head*5)+5));
+        return;
+    }
+
+    method void drawSegment() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x_head*5,y_head*5,((x_head*5)+5), ((y_head*5)+5));
+        do Screen.setColor(true);
+        do Screen.drawRectangle((x_head*5)+1,(y_head*5)+1,((x_head*5)+4), ((y_head*5)+4));
+        
+        return;
+    }
+
+    // finds a new pseudorandom location for the food and draws it there
+    method void placeFood() {
+        var int pos, i;
+        var boolean empty;
+        let empty = false;
+        let i = 0;
+
+        // while loop repeats the random location until an empty spot is found
+        while(~empty) {
+            let pos = Random.rand();
+            // while loop finds position modulo 5202 (number of spaces on the board)
+            while (pos > 5202) {
+                let pos = pos - 5202;
+            }
+
+            // takes the random number and scans it along the board
+            let y_food = pos/102;
+            let x_food = pos - (y_food*102);
+            
+            // assume we picked an empty spot and then test
+            let empty = true;
+
+            // make sure we didn't pick the head
+            if((x_head = x_food)&(y_head = y_food)){
+                let empty = false;
+            }
+
+            // // make sure we didn't pick the tail
+            while (i < length) {
+                if ((x_tail[i] = x_food) & (y_tail[i] = y_food)) {
+                    let empty = false;
+                }
+                let i = i+1;
+            }
+        }
+
+        // draw the food now that we have it set to an empty space
+        do Screen.setColor(true);
+        do Screen.drawCircle((x_food*5) + 3, (y_food*5) + 3, 2);
+        return;
+    }
+
+    // checks if the head position is the same as the food position
+    method boolean hitFood() {
+        var boolean result;
+        if((x_head=x_food)&(y_head=y_food)){
+            let result = true;
+        }
+        else {
+            let result = false;
+        }
+        return result;
+    }
+
+    // makes the tail larger.
+    // Puts the new segment at the current index location and shifts everything down
+    method void growTail() {
+        var int index;
+        let index = length;
+        let length = length + 1;
+
+        // start at the top and work down so we don't overwrite data we need
+        while (index > tail_index) {
+            let x_tail[index] = x_tail[index-1];
+            let y_tail[index] = y_tail[index-1];
+            let index = index - 1;
+        }
+        // Put the current head position as the new segment value
+        let x_tail[tail_index] = x_head;
+        let y_tail[tail_index] = y_head;
+        // Tail index follows the oldest segment, so advance it one
+        let tail_index = tail_index + 1;
+        return;
+    }
+
+    // erases the oldest entry in the tail
+    method void moveTail() {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x_tail[tail_index]*5,y_tail[tail_index]*5,((x_tail[tail_index]*5)+5), ((y_tail[tail_index]*5)+5));
+        let x_tail[tail_index] = x_head;
+        let y_tail[tail_index] = y_head;
+        let tail_index = tail_index + 1;
+        if(tail_index = length){
+            let tail_index = 0;
+        }
+        return;
+    }
+
+    // checks that we don't collide with our own tail
+    method boolean hitTail() {
+        var boolean result;
+        var int i, head, collisions;
+        let i = -1;
+        let collisions = 0;
+        let result = false;
+
+        // if length < 2 it can't hit itself and also the code won't work for length = 1
+        if(length < 2) {
+            return false;
+        }
+
+        while (i < length) {
+            let i = i+1;
+            if((x_head = x_tail[i])&(y_head = y_tail[i])) {
+                return true;
+            }
+        }
+
+        // since the head is already in the tail, there will be at least one "collision"
+        if (collisions > 1) {
+            let result = true;
+        }
+
+        return result;
+    }
+
+    // check if we hit the wall
+    method boolean hitWall() {
+        return ((x_head < 0) | (x_head > 101) | (y_head < 0) | (y_head > 50));
+    }
+
+    // method void debug(){
+    //     var int i;
+    //     let i = 0;
+        
+    //     do Output.printInt(x_head);
+    //     do Output.printString(" ");
+    //     do Output.printInt(y_head);
+    //     do Output.println();
+    //     do Output.println();
+    //     while (i < length){
+    //         do Output.printInt(x_tail[i]);
+    //         do Output.printString(" ");
+    //         do Output.printInt(y_tail[i]);
+    //         do Output.println();
+    //         let i = i+1;
+    //     }
+    //     do Sys.halt();
+    //     return;
+    // }
+}

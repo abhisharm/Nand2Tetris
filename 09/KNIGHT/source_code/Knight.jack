@@ -1,0 +1,29 @@
+// Class representing a 'Knight' on an abstract Gameboard
+
+class Knight {
+  field int x_square, y_square;
+
+  constructor Knight new(int x_square, int y_square) {
+    let x_square = x_square;
+    let y_square = y_square;
+    return this;
+  }
+
+  method void setXSquare(int square) {
+    let x_square = square;
+    return;
+  }
+
+  method void setYSquare(int square) {
+    let y_square = square;
+    return;
+  }
+
+  method int getXSquare() {
+    return x_square;
+  }
+
+  method int getYSquare() {
+    return y_square;
+  }
+}
